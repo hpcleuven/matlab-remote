@@ -1,0 +1,66 @@
+# The content of the mdcs.rc file will be used to fill out the cluster profile.
+# Comment any fields not required or leave them empty.
+
+########################################   REQUIRED   ########################################
+
+# The location of MATLAB as compared to the cluster: nonshared, shared, remote.
+# nonshared: MATLAB client does not have access to the cluster file system and does not have access
+# to the scheduler utilities.  MATLAB is most likely running on a user's machine.
+# shared: MATLAB client has access to the cluster file system and has the scheduler utilities
+# available.  MATLAB is most likely running directly on the cluster.
+# remote: MATLAB client has access to the cluster file system, but does not have the scheduler
+# utilities available.
+
+Type = remote
+
+
+# MATLAB Parallel Server Worker Count
+# Number must not exceed the number of MATLAB Parallel Server licenses purchased.
+
+NumWorkers = 100000
+
+
+########################################   OPTIONAL   ########################################
+
+# MATLAB Parallel Server Root Installation
+# Location of the MATLAB Parallel Server installation on the cluster.
+# Specify multiple versions by a comma separated list.  For example:
+#
+#  R2017a:/usr/local/R2017a,R2019a:/usr/local/R2019a
+#
+# REQUIRED: nonshared, remote
+# OPTIONAL:
+
+ClusterMatlabRoot = R2022b:/apps/leuven/skylake/2021a/software/MATLAB/R2022b,R2022a:/apps/leuven/skylake/2021a/software/MATLAB/R2022a,R2020a:/apps/leuven/skylake/2018a/software/MATLAB/R2020a,R2019a:/apps/leuven/skylake/2018a/software/MATLAB/R2019,R2018a:/apps/leuven/skylake/2018a/software/MATLAB/R2018a
+
+
+# Headnode Hostname
+# REQUIRED: nonshared, remote
+# OPTIONAL:
+
+ClusterHost = 10.118.230.4
+
+
+# Local Job Storage Location
+# Directory to be used as the local job storage location if prefdir can't be used.
+#  * For shared (almost always Linux), prefdir is typically in $HOME.  It might not be
+#    permissable/advisable to write to $HOME when a job is running.
+#  * For nonshared (almost always Windows), prefdir is typically in %APPDATA%.    
+# REQUIRED:
+# OPTIONAL: nonshared, shared
+
+LocalJobStorageLocation = 
+
+
+# Remote Job Storage Location
+# Directory on the cluster's file system to be used as the remote job storage location.
+# REQUIRED: nonshared, remote (and MATLAB client is not running on the cluster)
+# OPTIONAL:
+
+RemoteJobStorageLocation = 
+
+# Windows UNC Path to the cluster job storage location
+# REQUIRED: remote and MATLAB client is running on Windows, not on the cluster
+# OPTIONAL:
+
+JobStorageLocationOnPC = 
